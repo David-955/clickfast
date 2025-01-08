@@ -1,0 +1,12 @@
+{
+  "name": "clickfast",
+  "version": "1.0.0",
+  "description": "Sois le plus rapide des clickers du game ⚡",
+  "main": "script.js",
+  "scripts": {
+    // "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx jest"
+  },
+  "author": "",
+  "license": "ISC"
+}
