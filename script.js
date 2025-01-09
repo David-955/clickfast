@@ -42,8 +42,9 @@ document
       // canPlay = true;
       timerStarted = false;
       count = 0;
-      document.getElementById("score").innerHTML = count;
+      document.getElementById("score").innerHTML = '';
       document.getElementById("counter").innerHTML = `${count}`;
+      document.getElementById("timer").innerHTML = 'Temps : 5 secondes !';
       document.getElementById("button-clicker").disabled = false;
     });
   }
