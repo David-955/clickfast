@@ -109,11 +109,20 @@ describe("Button Clicker", () => {
   // Vérifiez que le score est supérieur à zéro
   // Simuler un clic sur le bouton de réinitialisation
   // Vérifiez que le score a été remis à zéro
-  const button = document.getElementById("button-reset");
 
-  button.click();
+  const button1 = document.getElementById("button-clicker");
 
+  button1.click();
+  button1.click();
+  button1.click();
+
+  const button2 = document.getElementById("button-reset");
+
+  button2.click();
+
+  setTimeout(() => {
   expect(document.getElementById("counter").innerHTML).toBe("0");
-});
+  }, 1000);
+  });
 
 });
