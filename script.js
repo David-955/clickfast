@@ -14,7 +14,6 @@ document
       document.getElementById("button-clicker").disabled = false;
       document.getElementById("counter").innerHTML = count;
       document.getElementById("timer").innerHTML = `Temps restant : ${timeLeft} secondes !`;
-      document.getElementById("score").innerHTML = '';
 
       const timerInterval = setInterval(() => {
         timeLeft--;
@@ -39,7 +38,6 @@ document
     const resetButton = document.getElementById("button-reset");
   
     resetButton.addEventListener("click", () => {
-      // canPlay = true;
       timerStarted = false;
       count = 0;
       document.getElementById("score").innerHTML = '';

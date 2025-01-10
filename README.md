@@ -1,3 +1,5 @@
+Lien pour y jouer : https://david-955.github.io/clickfast/ 
+
 # ClickFast ⏩
 
 Sois le plus rapide des clickers du game ⚡
