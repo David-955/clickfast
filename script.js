@@ -1,10 +1,15 @@
 let count = 0;
 let timerStarted = false;
 let timeLeft = 5;
+// Supprimer un utilisateur par son nom d'utilisateur 
+const usernameToDelete = "David Pro+ Ultra 512go";
 
 function handleGameButton() {
   document.getElementById("button-clicker").addEventListener("click", () => {
     if (!timerStarted) {
+      // const personalBest = parseInt(localStorage.getItem("personalBest") || "0");
+      // console.log(personalBest);
+      // localStorage.setItem("personalBest", "0");
       document.getElementById("button-reset").disabled = true;
       timerStarted = true;
       count = 0;
@@ -28,11 +33,14 @@ function handleGameButton() {
           document.getElementById(
             "score"
           ).innerHTML = `Ton score est : ${count}`;
-          //envoi score api ici
+          //envoi score api ici si score > personalBest
           if (count > parseInt(localStorage.getItem("personalBest") || "0")) {
             localStorage.setItem("personalBest", count);
+            // Appel de la fonction pour supprimer un utilisateur par son nom d'utilisateur
+            deleteUserByUsername(usernameToDelete);
+            // Appel de la fonction pour envoyer les données du nouveau meilleur score
             postData();
-            // reset api
+            // reset affichage api
             getData();
             displayScores();
             document.getElementById("scores-list").innerHTML = "";
@@ -68,9 +76,9 @@ const postData = async () => {
     createdAt: new Date().toISOString(),
     username: "David Pro+ Ultra 512go",
     avatar:
-      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2F0EpIWybDPfI%2Fhqdefault.jpg&f=1&nofb=1&ipt=ce88f4f6a1f2aee8e614210b05c3d89497b10763c7fd4ff1651ce821f5b3cd8d&ipo=images",
+      "https://c.tenor.com/D0a4Qs1i5hcAAAAM/bean-mr-bean.gif",
     score: count,
-    website_url: "onyj.github.io/ClickFast",
+    website_url: "david-955.github.io/clickfast",
   };
 
   try {
@@ -110,7 +118,8 @@ const getData = async () => {
   }
 };
 
-const usernameToDelete = "";
+
+
 const deleteUserByUsername = async (username) => {
   const url = "https://672e1217229a881691eed80f.mockapi.io/scores";
 
@@ -139,6 +148,7 @@ const deleteUserByUsername = async (username) => {
         console.log(`User with ID ${user.id} deleted successfully.`);
       }
     }
+   
 
     // Étape 3 : Ajouter un nouvel utilisateur
     // const newUserData = {
@@ -149,27 +159,24 @@ const deleteUserByUsername = async (username) => {
     //   website_url: "onyj.github.io/ClickFast",
     // };
 
-    const postResponse = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newUserData),
-    });
+    // const postResponse = await fetch(url, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(newUserData),
+    // });
 
-    if (!postResponse.ok) {
-      throw new Error("Network response was not ok");
-    }
+    // if (!postResponse.ok) {
+    //   throw new Error("Network response was not ok");
+    // }
 
-    const newUserResult = await postResponse.json();
-    console.log("New user posted successfully:", newUserResult);
-  } catch (error) {
-    console.error("Error:", error);
-  }
-};
-
-// Appel de la fonction pour supprimer et ajouter un utilisateur
-deleteUserByUsername(usernameToDelete);
+    // const newUserResult = await postResponse.json();
+    // console.log("New user posted successfully:", newUserResult);
+       } catch (error) {
+     console.error("Error:", error);
+   }
+ };
 
 const displayScores = async () => {
   const url = "https://672e1217229a881691eed80f.mockapi.io/scores";
@@ -211,3 +218,5 @@ const displayScores = async () => {
 
 // Appel de la fonction pour afficher les scores
 displayScores();
+
+// module.exports = { count, timerStarted, timeLeft, handleGameButton, handleResetButton, postData, getData, deleteUserByUsername, displayScores };
